@@ -1,4 +1,4 @@
-import "src/styles/globals.less";
+import "src/styles/globals.css";
 import type { AppProps } from "next/app";
 import { ConfigProvider } from "antd";
 
