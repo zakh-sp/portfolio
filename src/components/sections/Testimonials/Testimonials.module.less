@@ -1,0 +1,151 @@
+@import "../../../styles/mixins.less";
+
+.testimonials {
+  .section();
+}
+
+.inner {
+  .container();
+}
+
+.stage {
+  position: relative;
+  max-width: 900px;
+  margin-inline: auto;
+  padding: @space-7 @space-5 @space-6;
+  border-radius: @radius-xl;
+  text-align: center;
+  background:
+    radial-gradient(500px 240px at 50% 0%, fade(@pear, 8%), transparent 70%),
+    linear-gradient(180deg, fade(@ghost, 5%), fade(@ghost, 2%));
+  border: 1px solid @border;
+
+  .from(@bp-md, {
+        padding: @space-8 @space-8 @space-6;
+    });
+}
+
+.mark {
+  position: absolute;
+  top: -28px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 56px;
+  height: 56px;
+  padding: 14px;
+  border-radius: 50%;
+  background: @pear;
+  color: @text-on-pear;
+  box-shadow: @glow-pear;
+}
+
+.slide {
+  margin: 0;
+  min-height: 260px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: @space-6;
+}
+
+.quote {
+  margin: 0;
+  font-family: @font-display;
+  font-size: clamp(20px, 2.6vw, 28px);
+  line-height: 1.45;
+  letter-spacing: -0.015em;
+}
+
+.author {
+  display: inline-flex;
+  align-items: center;
+  gap: @space-3;
+  text-align: left;
+}
+
+.avatar {
+  display: grid;
+  place-items: center;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  font-family: @font-display;
+  font-weight: 700;
+  color: @pear;
+  background: @navy;
+  border: 1px solid fade(@pear, 40%);
+}
+
+.name {
+  display: block;
+  font-weight: 600;
+}
+
+.title {
+  display: block;
+  font-size: 14px;
+  color: @text-muted;
+}
+
+.controls {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: @space-5;
+  margin-top: @space-6;
+}
+
+.arrow {
+  display: grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: transparent;
+  border: 1px solid @border-strong;
+  cursor: pointer;
+  transition: all @duration @ease-out;
+  .focus-ring();
+
+  svg {
+    width: 18px;
+    height: 18px;
+  }
+
+  &:hover {
+    background: @pear;
+    border-color: @pear;
+    color: @text-on-pear;
+  }
+}
+
+.dots {
+  display: flex;
+  gap: @space-2;
+}
+
+.dot {
+  position: relative;
+  width: 10px;
+  height: 10px;
+  padding: 0;
+  border-radius: @radius-pill;
+  border: none;
+  background: @border-strong;
+  cursor: pointer;
+  overflow: hidden;
+  transition: width 0.5s @ease-out;
+  .focus-ring();
+}
+
+.dotActive {
+  width: 44px;
+}
+
+.dotFill {
+  position: absolute;
+  inset: 0;
+  background: @pear;
+  transform-origin: left;
+}

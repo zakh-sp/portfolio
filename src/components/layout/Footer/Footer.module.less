@@ -1,0 +1,125 @@
+@import "../../../styles/mixins.less";
+
+.footer {
+  position: relative;
+  border-top: 1px solid @border;
+  padding-block: @space-8 @space-6;
+  overflow: hidden;
+}
+
+.inner {
+  .container();
+  display: flex;
+  flex-direction: column;
+  gap: @space-7;
+}
+
+.top {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: @space-5;
+}
+
+.giant {
+  font-family: @font-display;
+  font-weight: 700;
+  min-width: 0;
+  font-size: clamp(48px, 15vw, 220px);
+  line-height: 0.85;
+  letter-spacing: -0.05em;
+  background: linear-gradient(180deg, fade(@ghost, 22%) 0%, fade(@ghost, 2%) 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  user-select: none;
+}
+
+.dot {
+  color: @pear;
+  -webkit-text-fill-color: @pear;
+}
+
+.toTop {
+  display: grid;
+  place-items: center;
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  background: @pear;
+  color: @text-on-pear;
+  flex-shrink: 0;
+  transition: transform @duration @ease-out;
+  .focus-ring();
+
+  .from(@bp-md, {
+        width: 64px;
+        height: 64px;
+    });
+
+  svg {
+    width: 24px;
+    height: 24px;
+  }
+
+  &:hover {
+    transform: translateY(-4px);
+  }
+}
+
+.bottom {
+  display: flex;
+  flex-direction: column;
+  gap: @space-5;
+  align-items: flex-start;
+
+  .from(@bp-md, {
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+    });
+}
+
+.copy {
+  color: @text-subtle;
+  font-size: 14px;
+}
+
+.nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: @space-5;
+}
+
+.navLink {
+  font-size: 14px;
+  color: @text-muted;
+  transition: color @duration @ease-out;
+
+  &:hover {
+    color: @pear;
+  }
+}
+
+.socials {
+  display: flex;
+  gap: @space-2;
+}
+
+.social {
+  display: grid;
+  place-items: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: 1px solid @border;
+  color: @text-muted;
+  transition: all @duration @ease-out;
+  .focus-ring();
+
+  &:hover {
+    color: @text-on-pear;
+    background: @pear;
+    border-color: @pear;
+  }
+}

@@ -1,0 +1,128 @@
+@import "../../../styles/mixins.less";
+
+.writing {
+  .section();
+}
+
+.inner {
+  .container();
+}
+
+.list {
+  border-top: 1px solid @border;
+}
+
+.row {
+  position: relative;
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  align-items: center;
+  gap: @space-5;
+  padding: @space-5 @space-2;
+  border-bottom: 1px solid @border;
+  overflow: hidden;
+  isolation: isolate;
+  .focus-ring();
+
+  .from(@bp-md, {
+        grid-template-columns: 60px 1fr 100px auto;
+        padding: @space-6 @space-4;
+    });
+
+  &::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    background: @pear;
+    transform: scaleY(0);
+    transform-origin: bottom;
+    transition: transform 0.5s @ease-out;
+  }
+
+  &:hover::before {
+    transform: scaleY(1);
+  }
+}
+
+.num {
+  font-family: @font-mono;
+  font-size: 13px;
+  color: @pear;
+  transition: color @duration;
+
+  .row:hover & {
+    color: @text-on-pear;
+  }
+}
+
+.text {
+  display: flex;
+  flex-direction: column;
+  gap: @space-1;
+}
+
+.title {
+  font-family: @font-display;
+  font-weight: 600;
+  font-size: clamp(19px, 2.2vw, 26px);
+  letter-spacing: -0.02em;
+  transition:
+    color @duration,
+    transform 0.5s @ease-out;
+
+  .row:hover & {
+    color: @text-on-pear;
+    transform: translateX(8px);
+  }
+}
+
+.excerpt {
+  font-size: 14px;
+  color: @text-muted;
+  transition:
+    color @duration,
+    transform 0.5s @ease-out;
+
+  .row:hover & {
+    color: fade(@navy-ink, 75%);
+    transform: translateX(8px);
+  }
+}
+
+.date {
+  display: none;
+  font-family: @font-mono;
+  font-size: 13px;
+  color: @text-subtle;
+
+  .from(@bp-md, {
+        display: block;
+    });
+
+  .row:hover & {
+    color: @navy;
+  }
+}
+
+.arrow {
+  display: grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  border: 1px solid @border-strong;
+  transition: all 0.5s @ease-out;
+
+  svg {
+    width: 18px;
+    height: 18px;
+  }
+
+  .row:hover & {
+    background: @navy-ink;
+    border-color: @navy-ink;
+    color: @pear;
+    transform: rotate(45deg);
+  }
+}

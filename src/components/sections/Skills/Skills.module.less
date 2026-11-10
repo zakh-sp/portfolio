@@ -1,0 +1,135 @@
+@import "../../../styles/mixins.less";
+
+.skills {
+  .section();
+  background: linear-gradient(
+    180deg,
+    transparent,
+    fade(@navy, 55%) 30%,
+    fade(@navy, 55%) 70%,
+    transparent
+  );
+}
+
+.inner {
+  .container();
+}
+
+.bento {
+  display: grid;
+  gap: @space-5;
+
+  .from(@bp-md, {
+        grid-template-columns: repeat(2, 1fr);
+    });
+
+  .from(@bp-lg, {
+        grid-template-columns: repeat(6, 1fr);
+
+        & > :nth-child(1) {
+            grid-column: span 4;
+        }
+        & > :nth-child(2) {
+            grid-column: span 2;
+        }
+        & > :nth-child(3) {
+            grid-column: span 2;
+        }
+        & > :nth-child(4) {
+            grid-column: span 4;
+        }
+    });
+}
+
+.card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: @space-3;
+  padding: @space-6;
+  border-radius: @radius-lg;
+  overflow: hidden;
+  .glass(3%);
+  transition: border-color @duration @ease-out;
+
+  &::before {
+    content: "";
+    position: absolute;
+    inset: auto -20% -60% auto;
+    width: 300px;
+    height: 300px;
+    border-radius: 50%;
+    background: radial-gradient(circle, fade(@pear, 12%), transparent 65%);
+    opacity: 0;
+    transition: opacity 0.5s @ease-out;
+  }
+
+  &:hover {
+    border-color: fade(@pear, 30%);
+
+    &::before {
+      opacity: 1;
+    }
+  }
+}
+
+.cardHead {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: @space-3;
+}
+
+.iconWrap {
+  display: grid;
+  place-items: center;
+  width: 52px;
+  height: 52px;
+  border-radius: @radius-md;
+  background: fade(@pear, 10%);
+  border: 1px solid fade(@pear, 25%);
+  color: @pear;
+
+  svg {
+    width: 24px;
+    height: 24px;
+  }
+}
+
+.count {
+  font-family: @font-mono;
+  font-size: 13px;
+  color: @text-subtle;
+}
+
+.title {
+  font-size: 28px;
+}
+
+.blurb {
+  color: @text-muted;
+  margin-bottom: @space-3;
+}
+
+.chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: @space-2;
+}
+
+.chip {
+  padding: 8px 14px;
+  border-radius: @radius-pill;
+  font-size: 14px;
+  background: fade(@navy-deep, 55%);
+  border: 1px solid @border;
+  transition: all @duration @ease-out;
+  cursor: default;
+
+  &:hover {
+    background: @pear;
+    color: @text-on-pear;
+    border-color: @pear;
+    transform: translateY(-2px);
+  }
+}

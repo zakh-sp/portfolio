@@ -1,0 +1,313 @@
+@import "../../../styles/mixins.less";
+
+.hero {
+  position: relative;
+  min-height: 100vh;
+  min-height: 100svh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding-top: @nav-height + @space-7;
+  overflow: hidden;
+}
+
+.blobs {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.blobPear {
+  position: absolute;
+  top: 8%;
+  right: 6%;
+  width: 520px;
+  height: 520px;
+  border-radius: 50%;
+  background: radial-gradient(circle, fade(@pear, 22%) 0%, transparent 65%);
+  filter: blur(40px);
+}
+
+.blobNavy {
+  position: absolute;
+  bottom: -10%;
+  left: -10%;
+  width: 640px;
+  height: 640px;
+  border-radius: 50%;
+  background: radial-gradient(circle, fade(@navy-line, 80%) 0%, transparent 65%);
+  filter: blur(50px);
+}
+
+.inner {
+  .container();
+  position: relative;
+  display: grid;
+  gap: @space-8;
+  align-items: center;
+
+  .from(@bp-lg, {
+        grid-template-columns: 1.25fr 1fr;
+        gap: @space-7;
+    });
+}
+
+.copy {
+  display: flex;
+  flex-direction: column;
+  gap: @space-5;
+}
+
+.status {
+  display: inline-flex;
+  align-items: center;
+  gap: @space-2;
+  align-self: flex-start;
+  padding: 8px 16px 8px 12px;
+  border-radius: @radius-pill;
+  font-size: 13px;
+  color: @text-muted;
+  .glass(4%);
+}
+
+.pulse {
+  position: relative;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: @pear;
+
+  &::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: 50%;
+    background: @pear;
+    animation: pulse 2s @ease-out infinite;
+  }
+}
+
+.sep {
+  width: 1px;
+  height: 12px;
+  background: @border-strong;
+  margin-inline: @space-1;
+}
+
+.pin {
+  width: 14px;
+  height: 14px;
+  color: @pear;
+}
+
+.title {
+  font-size: clamp(44px, 7.4vw, 92px);
+  line-height: 0.98;
+  letter-spacing: -0.045em;
+  font-weight: 600;
+}
+
+.mask {
+  display: block;
+  overflow: hidden;
+  padding-bottom: 0.06em;
+}
+
+.line {
+  display: block;
+}
+
+.accentLine {
+  display: block;
+  .pear-text();
+  font-style: italic;
+  font-weight: 500;
+}
+
+.intro {
+  max-width: 560px;
+  font-size: clamp(17px, 1.6vw, 19px);
+  color: @text-muted;
+}
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: @space-3;
+  margin-top: @space-2;
+}
+
+.logos {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: @space-2 @space-5;
+  margin-top: @space-5;
+}
+
+.logosLabel {
+  .eyebrow();
+  color: @text-subtle;
+}
+
+.logo {
+  font-family: @font-display;
+  font-weight: 600;
+  font-size: 17px;
+  color: @text-muted;
+  transition: color @duration @ease-out;
+
+  &:hover {
+    color: @ghost;
+  }
+}
+
+.visual {
+  position: relative;
+  justify-self: center;
+  width: min(100%, 440px);
+  aspect-ratio: 4 / 5;
+}
+
+.ring {
+  position: absolute;
+  inset: -18px;
+  border-radius: 240px 240px @radius-xl @radius-xl;
+  border: 1px dashed fade(@pear, 35%);
+}
+
+.frame {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  border-radius: 220px 220px @radius-xl @radius-xl;
+  overflow: hidden;
+  background: @navy;
+  box-shadow:
+    @shadow-lg,
+    0 0 0 1px @border;
+}
+
+.photo {
+  width: 100%;
+  height: 118%;
+  margin-top: -9%;
+  object-fit: cover;
+  object-position: 42% 78%;
+}
+
+.photoShade {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, transparent 55%, fade(@navy-deep, 75%) 100%);
+}
+
+.badge {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  gap: @space-3;
+  padding: @space-3 @space-4;
+  border-radius: @radius-md;
+  background: fade(@navy, 80%);
+  border: 1px solid @border-strong;
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  box-shadow: @shadow-lg;
+}
+
+.badgeTop {
+  top: 12%;
+  right: -6%;
+
+  .below(@bp-sm, {
+        right: -2%;
+    });
+}
+
+.badgeBottom {
+  bottom: 10%;
+  left: -10%;
+
+  .below(@bp-sm, {
+        left: -2%;
+    });
+}
+
+.badgeValue {
+  font-family: @font-display;
+  font-size: 34px;
+  font-weight: 700;
+  color: @pear;
+  line-height: 1;
+}
+
+.badgeLabel {
+  font-size: 12px;
+  line-height: 1.35;
+  color: @text-muted;
+
+  strong {
+    color: @ghost;
+  }
+}
+
+.badgeDot {
+  width: 34px;
+  height: 34px;
+  border-radius: 10px;
+  background: @pear;
+  box-shadow: @glow-pear;
+}
+
+.scroll {
+  position: absolute;
+  left: 50%;
+  bottom: 120px;
+  transform: translateX(-50%);
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  gap: @space-2;
+  .eyebrow();
+  color: @text-subtle;
+
+  .from(@bp-lg, {
+        display: flex;
+    });
+}
+
+.scrollIcon {
+  display: grid;
+  place-items: center;
+  width: 36px;
+  height: 56px;
+  border-radius: @radius-pill;
+  border: 1px solid @border-strong;
+
+  svg {
+    width: 16px;
+    height: 16px;
+    color: @pear;
+  }
+}
+
+.marquee {
+  margin-top: @space-9;
+  padding-block: @space-5;
+  border-block: 1px solid @border;
+  background: fade(@navy-ink, 40%);
+}
+
+@keyframes pulse {
+  to {
+    transform: scale(3);
+    opacity: 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .pulse::after {
+    animation: none;
+  }
+}

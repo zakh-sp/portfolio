@@ -1,0 +1,172 @@
+@import "../../../styles/mixins.less";
+
+.about {
+  .section();
+}
+
+.inner {
+  .container();
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: @space-7;
+
+  .from(@bp-md, {
+        grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
+        gap: @space-8;
+        align-items: start;
+    });
+}
+
+.media {
+  position: relative;
+
+  .from(@bp-md, {
+        position: sticky;
+        top: @nav-height + @space-6;
+    });
+}
+
+.photoWrap {
+  position: relative;
+  border-radius: @radius-xl;
+  overflow: hidden;
+  aspect-ratio: 4 / 5;
+  box-shadow: @shadow-lg;
+
+  &::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    box-shadow: inset 0 0 0 1px @border;
+    background: linear-gradient(200deg, transparent 50%, fade(@navy, 55%));
+  }
+}
+
+.photo {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: 50% 25%;
+  transition: transform 1.2s @ease-out;
+
+  .photoWrap:hover & {
+    transform: scale(1.04);
+  }
+}
+
+.caption {
+  position: absolute;
+  left: @space-4;
+  bottom: @space-4;
+  display: inline-flex;
+  align-items: center;
+  gap: @space-2;
+  padding: 8px 14px;
+  border-radius: @radius-pill;
+  font-size: 13px;
+  background: fade(@navy-deep, 70%);
+  border: 1px solid @border;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+
+.captionDot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: @pear;
+}
+
+.body {
+  display: flex;
+  flex-direction: column;
+  gap: @space-6;
+}
+
+.text {
+  display: flex;
+  flex-direction: column;
+  gap: @space-5;
+  font-size: clamp(17px, 1.5vw, 20px);
+  line-height: 1.7;
+  color: @text-muted;
+
+  p:first-child {
+    color: @ghost;
+    font-size: 1.12em;
+  }
+}
+
+.edu {
+  display: flex;
+  align-items: center;
+  gap: @space-4;
+  padding: @space-4 @space-5;
+  border-radius: @radius-md;
+  .glass(3%);
+}
+
+.eduIcon {
+  flex-shrink: 0;
+  width: 28px;
+  height: 28px;
+  color: @pear;
+}
+
+.eduSchool {
+  font-family: @font-display;
+  font-weight: 600;
+}
+
+.eduDegree {
+  font-size: 14px;
+  color: @text-muted;
+}
+
+.certs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: @space-2;
+
+  > * {
+    max-width: 100%;
+    white-space: normal;
+  }
+}
+
+.stats {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  margin-top: @space-9;
+  border-top: 1px solid @border;
+
+  .from(@bp-md, {
+        grid-template-columns: repeat(4, 1fr);
+    });
+}
+
+.stat {
+  display: flex;
+  flex-direction: column;
+  gap: @space-2;
+  padding: @space-6 @space-4 0 0;
+}
+
+.statValue {
+  font-family: @font-display;
+  font-weight: 600;
+  font-size: clamp(44px, 6vw, 72px);
+  line-height: 1;
+  letter-spacing: -0.04em;
+  .pear-text();
+}
+
+.statLabel {
+  font-size: 14px;
+  color: @text-muted;
+  max-width: 200px;
+}

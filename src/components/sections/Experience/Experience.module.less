@@ -1,0 +1,209 @@
+@import "../../../styles/mixins.less";
+
+@rail: 20px;
+@rail-md: 240px;
+
+.experience {
+  .section();
+}
+
+.inner {
+  .container();
+}
+
+.timeline {
+  position: relative;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: @space-7;
+}
+
+.track,
+.progress {
+  position: absolute;
+  top: 6px;
+  bottom: 0;
+  left: @rail;
+  width: 2px;
+  margin-left: -1px;
+
+  .from(@bp-md, {
+        left: @rail-md;
+    });
+}
+
+.track {
+  background: @border;
+}
+
+.progress {
+  background: linear-gradient(180deg, @pear, fade(@pear, 30%));
+  transform-origin: top;
+  box-shadow: 0 0 14px fade(@pear, 55%);
+}
+
+.item {
+  position: relative;
+  display: grid;
+  gap: @space-3;
+  padding-left: @rail + @space-6;
+
+  .from(@bp-md, {
+        grid-template-columns: (@rail-md - @space-6) 1fr;
+        gap: @space-8;
+        padding-left: 0;
+    });
+}
+
+.node {
+  position: absolute;
+  top: 4px;
+  left: @rail;
+  width: 16px;
+  height: 16px;
+  margin-left: -8px;
+  border-radius: 50%;
+  background: @navy-deep;
+  border: 3px solid @pear;
+  z-index: 1;
+
+  .from(@bp-md, {
+        left: @rail-md;
+    });
+}
+
+.nodePulse {
+  position: absolute;
+  inset: -3px;
+  border-radius: 50%;
+  border: 2px solid @pear;
+  animation: ping 2.2s @ease-out infinite;
+}
+
+.meta {
+  display: flex;
+  flex-direction: column;
+  gap: @space-1;
+
+  .from(@bp-md, {
+        text-align: right;
+        align-items: flex-end;
+    });
+}
+
+.period {
+  font-family: @font-mono;
+  font-size: 13px;
+  color: @pear;
+}
+
+.location {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 13px;
+  color: @text-subtle;
+
+  svg {
+    width: 13px;
+    height: 13px;
+  }
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  gap: @space-4;
+  padding: @space-6;
+  border-radius: @radius-lg;
+  .glass(3%);
+  transition:
+    border-color @duration @ease-out,
+    background @duration @ease-out,
+    transform @duration @ease-out;
+
+  &:hover {
+    border-color: fade(@pear, 30%);
+    background: @surface-hover;
+    transform: translateX(4px);
+  }
+}
+
+.cardHead {
+  display: flex;
+  flex-direction: column;
+  gap: @space-1;
+}
+
+.company {
+  display: inline-flex;
+  align-items: center;
+  gap: @space-3;
+  font-size: clamp(24px, 3vw, 32px);
+}
+
+.now {
+  padding: 3px 10px;
+  border-radius: @radius-pill;
+  background: @pear;
+  color: @text-on-pear;
+  font-family: @font-mono;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.role {
+  color: @text-muted;
+  font-size: 16px;
+}
+
+.summary {
+  color: @text-muted;
+}
+
+.highlights {
+  display: flex;
+  flex-direction: column;
+  gap: @space-3;
+
+  li {
+    position: relative;
+    padding-left: @space-5;
+    color: @text-muted;
+    font-size: 15px;
+
+    &::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 0.7em;
+      width: 10px;
+      height: 2px;
+      background: @pear;
+    }
+  }
+}
+
+.tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: @space-2;
+}
+
+@keyframes ping {
+  to {
+    transform: scale(2.4);
+    opacity: 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .nodePulse {
+    animation: none;
+  }
+}
